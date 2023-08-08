@@ -16,6 +16,7 @@
     <properties>
         <java.version>17</java.version>
         <ok.httpclient.version>5.0.0-alpha.11</ok.httpclient.version>
+        <repository.name>semtech</repository.name>
     </properties>
     <dependencies>
         <dependency>
@@ -53,15 +54,21 @@
     </dependencies>
     <distributionManagement>
         <repository>
-            <id>dces-selectconfig-release-local</id>
-            <name>dces-semtech-repository-release-local</name>
-            <url>https://artifactory-dces.schneider-electric.com/artifactory/dces-semtech-release-local</url>
+            <id>dces-${repository.name}-release-local</id>
+            <name>dces-${repository.name}-repository-release-local</name>
+            <url>https://artifactory-dces.schneider-electric.com/artifactory/dces-${repository.name}-release-local/
+            </url>
         </repository>
         <snapshotRepository>
-            <id>dces-selectconfig-snapshot-local</id>
-            <name>semtech-repository-snapshot-local</name>
-            <url>https://artifactory-dces.schneider-electric.com/artifactory/dces-semtech-snapshot-local</url>
+            <id>dces-${repository.name}-snapshot-local</id>
+            <name>${repository.name}-repository-snapshot-local</name>
+            <url>https://artifactory-dces.schneider-electric.com/artifactory/dces-${repository.name}-snapshot-local/
+            </url>
         </snapshotRepository>
+        <site>
+            <id>website</id>
+            <url>file:/tmp</url>
+        </site>
     </distributionManagement>
 
 </project>
