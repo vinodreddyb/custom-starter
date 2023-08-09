@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.schneiderelectric.dces.semtech</groupId>
     <artifactId>semtech-security-spring-boot-starter</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>semtech-security-spring-boot-starter</name>
     <description>semtech-security-spring-boot-starter</description>
     <properties>
@@ -57,7 +56,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.schneider-electric.com:se-bb-admin/semtech-security-spring-boot-starter.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>semtech-security-spring-boot-starter-1.0.0</tag>
     </scm>
 
     <distributionManagement>
