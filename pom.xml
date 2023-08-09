@@ -14,6 +14,8 @@
     <name>semtech-security-spring-boot-starter</name>
     <description>semtech-security-spring-boot-starter</description>
     <properties>
+        <!--<maven.scm.plugin.version>1.9.2</maven.scm.plugin.version>
+        <maven.release.plugin.version>2.5.1</maven.release.plugin.version>-->
         <java.version>17</java.version>
         <ok.httpclient.version>5.0.0-alpha.11</ok.httpclient.version>
         <repository.name>semtech</repository.name>
@@ -52,6 +54,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <scm>
+        <developerConnection>scm:git:git@github.schneider-electric.com:se-bb-admin/semtech-security-spring-boot-starter.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <distributionManagement>
         <repository>
             <id>dces-${repository.name}-release-local</id>
@@ -70,5 +78,7 @@
             <url>file:/tmp</url>
         </site>
     </distributionManagement>
+
+
 
 </project>
