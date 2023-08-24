@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.schneiderelectric.dces.semtech</groupId>
     <artifactId>semtech-security-spring-boot-starter</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6-SNAPSHOT</version>
     <name>semtech-security-spring-boot-starter</name>
     <description>semtech-security-spring-boot-starter</description>
     <properties>
@@ -56,7 +56,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.schneider-electric.com:se-bb-admin/semtech-security-spring-boot-starter.git</developerConnection>
-        <tag>semtech-security-spring-boot-starter-1.0.5</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
