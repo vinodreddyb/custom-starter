@@ -18,7 +18,7 @@ public class SimpleAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        final var err = APIResponse.Error.builder().errorCode(String.valueOf(HttpStatus.UNAUTHORIZED.value())).detailedMessage("Unauthorized user").uri(request.getRequestURI()).build();
+        final var err = APIResponse.Error.builder().errorCode(String.valueOf(HttpStatus.UNAUTHORIZED.value())).errorMessage("Unauthorized user").uri(request.getRequestURI()).build();
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setCharacterEncoding("utf-8");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);

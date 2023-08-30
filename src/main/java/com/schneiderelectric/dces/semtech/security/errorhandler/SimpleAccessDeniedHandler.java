@@ -18,7 +18,7 @@ public class SimpleAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-        final var err = APIResponse.Error.builder().errorCode(String.valueOf(HttpStatus.FORBIDDEN.value())).detailedMessage("Forbidden access of resources").uri(request.getRequestURI()).build();
+        final var err = APIResponse.Error.builder().errorCode(String.valueOf(HttpStatus.FORBIDDEN.value())).errorMessage("Forbidden access of resources").uri(request.getRequestURI()).build();
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.setCharacterEncoding("utf-8");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
