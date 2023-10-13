@@ -17,7 +17,7 @@ public class APIResponse {
     @Builder
     public static class Error {
         private String message;
-        private String detailedMessage;
+        private String errorMessage;
         private String errorCode;
         private String uri;
     }
