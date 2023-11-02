@@ -62,7 +62,9 @@ public class UmsService {
         UMSUserDetails umsUserDetails = null;
         try {
             Call call = okHttpClient.newCall(request);
-            try (Response response = call.execute()) {
+            try (Response response = call.execute();
+                 var responseBody = response.body();
+                 var bodyStream = responseBody.byteStream())  {
 
                 if (response.code() == 401) {
                     log.error("Not a valid token, please use the valid token");
@@ -70,7 +72,7 @@ public class UmsService {
                 }
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                umsUserDetails = mapper.readValue(response.body().byteStream(), UMSUserDetails.class);
+                umsUserDetails = mapper.readValue(bodyStream, UMSUserDetails.class);
             }
         } catch (Exception e) {
             log.error("Exception occurred while validating token from UMS", e);
