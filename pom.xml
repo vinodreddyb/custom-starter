@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.schneiderelectric.dces.semtech</groupId>
     <artifactId>semtech-security-spring-boot-starter</artifactId>
-    <version>1.0.10-SNAPSHOT</version>
+    <version>1.0.11-SNAPSHOT</version>
     <name>semtech-security-spring-boot-starter</name>
     <description>semtech-security-spring-boot-starter</description>
     <properties>
