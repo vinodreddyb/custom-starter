@@ -21,5 +21,6 @@ public class UMSUserDetails {
     private List<UMSUserApplication> applications;
     private List<UMSUserSocialIdentity> socialIdentities;
     private List<UMSUserAccess> userAccess;
+    private UMSError umsError;
 
 }

@@ -3,18 +3,17 @@ package com.schneiderelectric.dces.semtech.security.ums;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.schneiderelectric.dces.semtech.security.UmsSettingProperties;
-import com.schneiderelectric.dces.semtech.security.exception.UMSUnAuthorizedException;
-import com.schneiderelectric.dces.semtech.security.exception.UmsServiceException;
+import com.schneiderelectric.dces.semtech.security.model.UMSError;
 import com.schneiderelectric.dces.semtech.security.model.UMSUserDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import okhttp3.Call;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.springframework.http.HttpStatus;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -54,29 +53,36 @@ public class UmsService {
 
         Request request = new Request.Builder()
                 .url(url)
-                .addHeader("token", token)
-                .addHeader("isPingId", "true")
+                .addHeader("token","Bearer " + token)
+                .addHeader("isPingId","true")
                 .addHeader("Accept", "application/json")
                 .build();
+        Call call = okHttpClient.newCall(request);
 
-        UMSUserDetails umsUserDetails = null;
+        UMSUserDetails umsUserDetails  = new UMSUserDetails();;
+
         try {
-            Call call = okHttpClient.newCall(request);
             try (Response response = call.execute();
                  var responseBody = response.body();
-                 var bodyStream = responseBody.byteStream())  {
-
-                if (response.code() == 401) {
-                    log.error("Not a valid token, please use the valid token");
-                    throw new UMSUnAuthorizedException("Not a valid token, please use the valid token. Response from UMS " + response.code());
-                }
+                 var bodyStream = responseBody.byteStream()) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                if (response.code() == 401) {
+                    log.error("Not a valid token, please use the valid token");
+                    var error = mapper.readValue(bodyStream, UMSError.class);
+                    umsUserDetails.setUmsError(error);
+                    return umsUserDetails;
+                }
                 umsUserDetails = mapper.readValue(bodyStream, UMSUserDetails.class);
             }
+
         } catch (Exception e) {
-            log.error("Exception occurred while validating token from UMS", e);
-            throw new UmsServiceException("Exception occurred while validating token from UMS", e);
+            log.error("Unable to create POJO for the UMSUserDetails object");
+            var umsError = new UMSError();
+            umsError.setResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.name());
+            umsError.setStatus(500);
+            umsError.setResponseStatus("UMS service invocation error " + e.getMessage());
+            umsUserDetails.setUmsError(umsError);
         }
 
         return umsUserDetails;
