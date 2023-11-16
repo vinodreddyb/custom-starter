@@ -7,13 +7,19 @@ import com.schneiderelectric.dces.semtech.security.filter.CustomOpaqueTokenIntro
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Map;
 
 @Configuration
 @RequiredArgsConstructor
@@ -50,7 +56,18 @@ public class UmsSecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return webSecurity -> webSecurity.ignoring().requestMatchers(umsSettingProperties.getAllowedUrls());
+
+        return webSecurity -> {
+            WebSecurity.IgnoredRequestConfigurer ignoring = webSecurity.ignoring();
+            Map<String, String[]> allowedUrls = umsSettingProperties.getAllowedUrls();
+            if(!CollectionUtils.isEmpty(allowedUrls)) {
+                allowedUrls.forEach((method,urls)-> {
+                    for(var url : urls) {
+                        ignoring.requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.valueOf(method),url));
+                    }
+                });
+            }
+        };
     }
 
 
