@@ -78,13 +78,13 @@
         <repository>
             <id>em-dces-semtech-release-maven-fed</id>
             <name>em-dces-semtech-release-maven-fed</name>
-            <url>https://jfrog-euw.se.com/artifactory/artifactory/em-dces-semtech-release-maven-fed
+            <url>https://jfrog-euw.se.com/artifactory/em-dces-semtech-release-maven-fed
             </url>
         </repository>
         <snapshotRepository>
             <id>em-dces-semtech-snapshot-maven-fed</id>
             <name>em-dces-semtech-snapshot-maven-fed</name>
-            <url>https://jfrog-euw.se.com/artifactory/artifactory/em-dces-semtech-snapshot-maven-fed/
+            <url>https://jfrog-euw.se.com/artifactory/em-dces-semtech-snapshot-maven-fed
             </url>
         </snapshotRepository>
         <site>
