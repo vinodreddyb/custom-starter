@@ -61,15 +61,15 @@
 
     <distributionManagement>
         <repository>
-            <id>dces-${repository.name}-release-local</id>
-            <name>dces-${repository.name}-repository-release-local</name>
-            <url>https://artifactory-dces.schneider-electric.com/artifactory/dces-${repository.name}-release-local/
+            <id>em-dces-semtech-release-maven-fed</id>
+            <name>em-dces-semtech-release-maven-fed</name>
+            <url>https://jfrog-euw.se.com/artifactory/artifactory/em-dces-semtech-release-maven-fed
             </url>
         </repository>
         <snapshotRepository>
-            <id>dces-${repository.name}-snapshot-local</id>
-            <name>${repository.name}-repository-snapshot-local</name>
-            <url>https://artifactory-dces.schneider-electric.com/artifactory/dces-${repository.name}-snapshot-local/
+            <id>em-dces-semtech-snapshot-maven-fed</id>
+            <name>em-dces-semtech-snapshot-maven-fed</name>
+            <url>https://jfrog-euw.se.com/artifactory/artifactory/em-dces-semtech-snapshot-maven-fed/
             </url>
         </snapshotRepository>
         <site>
