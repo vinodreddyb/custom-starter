@@ -74,7 +74,7 @@
         <tag>HEAD</tag>
     </scm>
 
-   <!-- <distributionManagement>
+    <distributionManagement>
         <repository>
             <id>em-dces-semtech-release-maven-fed</id>
             <name>em-dces-semtech-release-maven-fed</name>
@@ -91,7 +91,7 @@
             <id>website</id>
             <url>file:/tmp</url>
         </site>
-    </distributionManagement>-->
+    </distributionManagement>
 
 
 
