@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
+        <version>3.2.3</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.schneiderelectric.dces.semtech</groupId>
@@ -16,7 +16,7 @@
         <!--<maven.scm.plugin.version>1.9.2</maven.scm.plugin.version>
         <maven.release.plugin.version>2.5.1</maven.release.plugin.version>-->
         <java.version>17</java.version>
-        <ok.httpclient.version>5.0.0-alpha.11</ok.httpclient.version>
+        <ok.httpclient.version>5.0.0-alpha.12</ok.httpclient.version>
         <repository.name>semtech</repository.name>
     </properties>
     <repositories>
